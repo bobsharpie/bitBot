@@ -139,8 +139,8 @@ sub trimPriceHistory
 	my ($self) = shift;
 	my ($olderThan) = @_;  #in hours
 	my $db = $self->getDb();
-    my $sth = do_sql_cmd($db,qq/delete FROM altCoinPriceHistory 
-							where date <= DATE_SUB( NOW() , INTERVAL $olderThan hours )/);
+    	my $sth = $db->do(qq/delete FROM altCoinPriceHistory 
+				where date <= DATE_SUB( NOW() , INTERVAL $olderThan hours )/);
 	 $db->disconnect();
 }
 
